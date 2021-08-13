@@ -31,8 +31,8 @@ def execute(root, source_entry, bullet_entry, execute_button, output_box):
         bar_window.destroy()
         bar_window.update()
         mb.showinfo(title="Message", message="Process Completed.")
-        source_entry.delete(0)
-        bullet_entry.delete(0)
+        source_entry.delete(0, 'end')
+        bullet_entry.delete(0, 'end')
     except FileNotFoundError:
         bar_window.destroy()
         bar_window.update()
@@ -43,10 +43,12 @@ def execute(root, source_entry, bullet_entry, execute_button, output_box):
 
 def source_get_path(root):
     path = fd.askdirectory(title="Please select the source code folder")
+    source_entry.delete(0, 'end')
     source_entry.insert(0, (path))
 
 def bullet_get_path(root):
     path = fd.askdirectory(initialdir="/home/jack", title="Please select the folder containing the changes")
+    bullet_entry.delete(0, 'end')
     bullet_entry.insert(0, (path))
 
 
